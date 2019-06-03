@@ -14,6 +14,13 @@ import { RouterModule } from '@angular/router';
           path: 'home',
           loadChildren: () =>
             import('@nx8-test/home').then(module => module.HomeModule)
+        },
+        {
+          path: 'shared-profile',
+          loadChildren: () =>
+            import('@nx8-test/shared/profile').then(
+              module => module.SharedProfileModule
+            )
         }
       ],
       { initialNavigation: 'enabled' }

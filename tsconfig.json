@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx8-test/home": ["libs/home/src/index.ts"]
+      "@nx8-test/home": ["libs/home/src/index.ts"],
+      "@nx8-test/shared/profile": ["libs/shared/profile/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

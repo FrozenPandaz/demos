@@ -146,6 +146,37 @@
           "styleext": "scss"
         }
       }
+    },
+    "shared-profile": {
+      "projectType": "library",
+      "root": "libs/shared/profile",
+      "sourceRoot": "libs/shared/profile/src",
+      "prefix": "nx8-test",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/profile/tsconfig.lib.json",
+              "libs/shared/profile/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/profile/jest.config.js",
+            "tsConfig": "libs/shared/profile/tsconfig.spec.json",
+            "setupFile": "libs/shared/profile/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

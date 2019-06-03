@@ -4,6 +4,10 @@
     "outDir": "../../dist/out-tsc",
     "types": []
   },
-  "include": ["**/*.ts", "../../libs/home/src/index.ts"],
+  "include": [
+    "**/*.ts",
+    "../../libs/home/src/index.ts",
+    "../../libs/shared/profile/src/index.ts"
+  ],
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"]
 }
