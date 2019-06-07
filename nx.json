@@ -7,5 +7,15 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "app1-e2e": {
+      "tags": []
+    },
+    "app1": {
+      "tags": []
+    },
+    "lib1": {
+      "tags": []
+    }
+  }
 }
