@@ -1,4 +1,5 @@
 const wp = require('@cypress/webpack-preprocessor');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 console.log(require('clean-webpack-plugin'));
@@ -45,6 +46,12 @@ module.exports = (on, config) => {
         },
         resolve: {
           extensions: ['.ts', '.js', '.jsx', '.tsx', '.coffee', '.scss', '.json'],
+          plugins: [
+            new TsconfigPathsPlugin({
+      configFile: path.join(__dirname, '../../tsconfig.e2e.json'),
+      extensions: ['.ts', '.js', '.jsx', '.tsx', '.coffee', '.scss', '.json']
+    })
+          ]
         },
 
         stats: {
