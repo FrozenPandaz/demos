@@ -1,5 +1,7 @@
 import { getGreeting } from '../support/app.po';
 
+import '@nx8-test/home';
+
 describe('app1', () => {
   beforeEach(() => cy.visit('/'));
 
