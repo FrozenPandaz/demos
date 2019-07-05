@@ -1,6 +1,9 @@
 import { JSXify } from '@nx-example/shared/jsxify';
 
+import './product.element.scss';
+
 enum ProductElementAttribute {
+  Image = 'image',
   Name = 'name',
   Price = 'price'
 }
@@ -16,8 +19,16 @@ declare global {
 export class ProductElement extends HTMLElement {
   static observedAttributes = [
     ProductElementAttribute.Name,
-    ProductElementAttribute.Price
+    ProductElementAttribute.Price,
+    ProductElementAttribute.Image
   ];
+
+  get image(): string {
+    return this.getAttribute(ProductElementAttribute.Image);
+  }
+  set image(image: string) {
+    this.setAttribute(ProductElementAttribute.Image, image);
+  }
 
   get name(): string {
     return this.getAttribute(ProductElementAttribute.Name);
@@ -37,14 +48,16 @@ export class ProductElement extends HTMLElement {
     this.setAttribute(ProductElementAttribute.Price, price.toString());
   }
 
-  private nameElement: HTMLHeadingElement = document.createElement('h2');
+  private nameElement = document.createElement('h2');
 
-  private priceElement: HTMLSpanElement = document.createElement('span');
+  private priceElement = document.createElement('span');
+
+  private imageElement = document.createElement('img');
 
   connectedCallback() {
     const p = document.createElement('p');
-    p.appendChild(document.createTextNode('Price: '));
     p.appendChild(this.priceElement);
+    this.appendChild(this.imageElement);
     this.appendChild(this.nameElement);
     this.appendChild(p);
   }
@@ -57,6 +70,10 @@ export class ProductElement extends HTMLElement {
       }
       case ProductElementAttribute.Price: {
         this.priceElement.textContent = this.displayPrice;
+        break;
+      }
+      case ProductElementAttribute.Image: {
+        this.imageElement.src = this.image;
         break;
       }
     }
